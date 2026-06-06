@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Negentropic Systems — Operations Division</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14110d;
+    --bg-2:#1b1712;
+    --ink:#ece2cf;
+    --ink-dim:#9d917b;
+    --ink-faint:#6b6353;
+    --amber:#dd9a3c;
+    --amber-soft:#caa468;
+    --oxblood:#82362a;
+    --oxblood-2:#6d2c22;
+    --line:rgba(220,200,160,.16);
+    --line-soft:rgba(220,200,160,.09);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;
+    font-optical-sizing:auto;
+    font-size:clamp(1.02rem,.55rem + .9vw,1.22rem);
+    line-height:1.66;
+    min-height:100vh;
+    position:relative;
+    overflow-x:hidden;
+  }
+  /* warm vignette + lamp glow */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(120% 80% at 78% -10%, rgba(221,154,60,.10), transparent 55%),
+      radial-gradient(140% 120% at 50% 120%, rgba(130,54,42,.10), transparent 60%),
+      radial-gradient(100% 100% at 50% 40%, transparent 60%, rgba(0,0,0,.45) 100%);
+  }
+  /* film grain */
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay;
+  }
+  .wrap{position:relative;z-index:2;max-width:760px;margin:0 auto;padding:0 clamp(1.4rem,5vw,3rem)}
+
+  /* ── classification bands ─────────────── */
+  .band{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:clamp(.58rem,.45rem + .35vw,.72rem);
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    background:linear-gradient(90deg,var(--oxblood-2),var(--oxblood));
+    color:#f3e7d4;
+    padding:.62rem clamp(1.4rem,5vw,3rem);
+    display:flex;gap:1.2rem;justify-content:space-between;align-items:center;
+    box-shadow:0 1px 0 rgba(255,220,170,.12) inset, 0 -1px 0 rgba(0,0,0,.3) inset;
+  }
+  .band span{white-space:nowrap}
+  .band .mid{opacity:.78;font-weight:400;letter-spacing:.1em;text-transform:none;font-style:italic;flex:1;text-align:center;overflow:hidden;text-overflow:ellipsis}
+  .band.bottom{margin-top:5rem}
+
+  /* ── masthead ─────────────── */
+  header{padding:clamp(3rem,9vw,5.5rem) 0 2.4rem}
+  .meta-row{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-faint);
+    display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;margin-bottom:2.1rem;
+  }
+  .meta-row b{color:var(--ink-dim);font-weight:500}
+  .redact{
+    display:inline-block;background:var(--ink-dim);color:transparent;
+    border-radius:1px;height:.78em;width:5.5em;transform:translateY(.08em);
+    box-shadow:0 0 0 1px rgba(0,0,0,.25) inset;
+  }
+  .org{
+    font-family:"Fraunces",serif;
+    font-weight:600;font-optical-sizing:auto;
+    font-size:clamp(2.5rem,1rem + 7vw,4.4rem);
+    line-height:.98;letter-spacing:-.018em;
+    margin-bottom:1.2rem;
+  }
+  .org .div{
+    display:block;font-size:clamp(.78rem,.6rem + .6vw,1rem);
+    font-family:"IBM Plex Mono",monospace;font-weight:500;
+    letter-spacing:.32em;text-transform:uppercase;color:var(--amber);
+    margin-top:1.1rem;
+  }
+  .status{display:inline-block;width:.5em;height:.5em;border-radius:50%;
+    background:var(--amber);margin-right:.55em;transform:translateY(-.12em);
+    box-shadow:0 0 9px 1px rgba(221,154,60,.7);animation:pulse 3.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+  .tagline{
+    font-family:"Fraunces",serif;font-style:italic;font-weight:400;
+    font-size:clamp(1.35rem,.8rem + 2.2vw,2.1rem);
+    line-height:1.25;color:var(--ink);margin-top:.4rem;max-width:18ch;
+  }
+  .tagline .nn{color:var(--amber);font-style:normal;font-weight:500}
+  .caret{display:inline-block;width:.07em;height:1em;background:var(--amber);
+    transform:translateY(.14em);margin-left:.08em;animation:blink 1.15s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+
+  .rule{height:1px;background:var(--line);margin:0;border:0}
+  .rule.thick{height:2px;background:linear-gradient(90deg,var(--line),transparent)}
+
+  /* ── body prose ─────────────── */
+  main{padding:3rem 0 0}
+  .sect{margin-bottom:2.9rem}
+  .label{
+    font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--amber-soft);margin-bottom:1rem;
+    display:flex;align-items:center;gap:.8rem;
+  }
+  .label::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+  p{margin-bottom:1.15rem;color:var(--ink)}
+  p.lead{font-size:1.08em}
+  em{color:var(--amber-soft);font-style:italic}
+  .pull{
+    font-family:"Fraunces",serif;font-weight:500;font-style:italic;
+    font-size:clamp(1.3rem,.9rem + 1.6vw,1.7rem);line-height:1.34;
+    color:var(--ink);border-left:2px solid var(--oxblood);
+    padding:.2rem 0 .2rem 1.4rem;margin:2.4rem 0;
+  }
+  .signoff{margin-top:3rem;color:var(--ink-dim);font-style:italic}
+  .signoff .name{
+    display:block;margin-top:1.3rem;font-style:normal;
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-faint);
+  }
+
+  footer{padding:2.6rem 0 0;text-align:center}
+  .stamp{
+    display:inline-block;font-family:"IBM Plex Mono",monospace;
+    font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-faint);border:1px solid var(--line);
+    padding:.5rem 1.1rem;border-radius:2px;transform:rotate(-1.4deg);
+    margin-bottom:1.4rem;
+  }
+  .colophon{font-family:"IBM Plex Mono",monospace;font-size:.66rem;
+    letter-spacing:.12em;color:var(--ink-faint);margin-bottom:1rem}
+  .colophon a{color:var(--amber-soft);text-decoration:none;border-bottom:1px solid var(--line)}
+
+  /* load reveal */
+  .reveal{opacity:0;transform:translateY(14px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .d1{animation-delay:.05s}.d2{animation-delay:.22s}.d3{animation-delay:.4s}
+  .d4{animation-delay:.58s}.d5{animation-delay:.76s}.d6{animation-delay:.94s}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{animation:none;opacity:1;transform:none}
+    .status,.caret{animation:none}
+  }
+</style>
+</head>
+<body>
+
+  <div class="band reveal d1">
+    <span>Negentropic Systems</span>
+    <span class="mid">this page is not classified, but it feels like it should be</span>
+    <span>Est. MMXXVI</span>
+  </div>
+
+  <div class="wrap">
+
+    <header>
+      <div class="meta-row reveal d2">
+        <span><b>File:</b> Personnel / Operations</span>
+        <span><b>Subject:</b> <span class="redact"></span></span>
+        <span><b>Status:</b> On Shift</span>
+      </div>
+
+      <h1 class="org reveal d2">
+        Negentropic<br>Systems
+        <span class="div">Operations Division</span>
+      </h1>
+
+      <p class="tagline reveal d3">
+        <span class="status"></span>What do we owe<br>each other? <span class="nn">Not nothing.</span><span class="caret"></span>
+      </p>
+    </header>
+
+    <hr class="rule thick reveal d3">
+
+    <main>
+      <section class="sect reveal d4">
+        <div class="label">On the Nature of the Work</div>
+        <p class="lead">Everything decays when no one is watching it. Systems drift, certificates lapse, the backups quietly stop running, and the universe, left to its own devices, settles toward a flat and final <em>nothing</em>. This is not a metaphor. It is the second law of thermodynamics, and it is undefeated.</p>
+        <p>Negentropic Systems exists to lose to it slowly, and on purpose, on behalf of other people.</p>
+      </section>
+
+      <div class="pull reveal d4">
+        Maintenance is a form of care. The universe tends toward nothing. We don't.
+      </div>
+
+      <section class="sect reveal d5">
+        <div class="label">What That Means in Practice</div>
+        <p>We do the unglamorous work of keeping things from falling apart. Anyone who leans on a system — usually without ever knowing your name — deserves for it to hold. Holding it takes energy. Someone has to be willing to spend that energy, stay late, and push back against the dark.</p>
+        <p>Usually that someone has coffee. Here, that someone is us.</p>
+      </section>
+
+      <section class="sect reveal d5">
+        <div class="label">Who This Is For</div>
+        <p>This is support for the people doing strange, important work in the small hours. The ones rebuilding something, carrying something, watching something nobody else thought to watch. They get the same grave courtesy whether they run the place or just lost their password again.</p>
+      </section>
+
+      <hr class="rule reveal d6">
+
+      <div class="signoff reveal d6">
+        <p>What do we owe each other? After five-odd decades, I still can't hand you the whole answer. But I know it isn't nothing. So we start there, and we keep the lights on.</p>
+        <span class="name">— Filed by <span class="redact" style="width:4em"></span> · Operations</span>
+      </div>
+
+      <footer class="reveal d6">
+        <div class="stamp">Order Is Something We Owe Each Other</div>
+        <div class="colophon">Negentropic Systems · <a href="https://negentropic.systems">negentropic.systems</a></div>
+      </footer>
+    </main>
+  </div>
+
+  <div class="band bottom reveal d6">
+    <span>Negentropic Systems</span>
+    <span class="mid">resisting the inevitable, courteously, since today</span>
+    <span>// OPS</span>
+  </div>
+
+</body>
+</html>
