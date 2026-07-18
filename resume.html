@@ -6,15 +6,14 @@
 <title>Dave Christensen — JD Alignment</title>
 <style>
   :root{
-    --bg:#faf9f6;
-    --panel:#ffffff;
-    --ink:#1c1c1a;
-    --ink-dim:#5a584f;
-    --ink-faint:#9b9887;
-    --line:#e2e0d6;
-    --accent:#a3521f;
-    --accent-soft:#f0e2d2;
-    --hit-bg:#fff6e8;
+    --bg:#ffffff;
+    --panel:#f7f7f6;
+    --ink:#1a1a1a;
+    --ink-dim:#59595a;
+    --ink-faint:#96958f;
+    --line:#e2e1de;
+    --accent:#4a4a80;
+    --accent-soft:#eeeef6;
     --mono:"IBM Plex Mono","SF Mono",Menlo,Consolas,monospace;
     --serif:"Georgia","Iowan Old Style",serif;
   }
@@ -45,6 +44,7 @@
     position:sticky;top:0;
     padding:2rem 1.4rem 2rem 1.5rem;
     border-right:1px solid var(--line);
+    background:var(--panel);
     height:100vh;overflow-y:auto;
   }
   aside h2{
@@ -119,35 +119,24 @@
   ul.bullets{list-style:none;display:flex;flex-direction:column;gap:.4rem}
   ul.bullets li{
     position:relative;padding-left:1.1rem;font-size:.92rem;
-    border-radius:5px;padding-top:.15rem;padding-bottom:.15rem;
-    transition:opacity .15s ease, background-color .15s ease;
+    padding-top:.15rem;padding-bottom:.15rem;
   }
   ul.bullets li::before{
-    content:"—";position:absolute;left:0;color:var(--ink-faint);
+    content:"—";position:absolute;left:0;color:var(--accent);
   }
-  ul.bullets li.dim{opacity:.28}
-  ul.bullets li.hit{background:var(--hit-bg);opacity:1}
-  ul.bullets li.hit::before{color:var(--accent)}
+  ul.bullets li.collapsed{display:none}
 
-  .chipwrap{display:flex;flex-wrap:wrap;gap:.4rem}
-  .chip{
-    font-size:.82rem;border:1px solid var(--line);border-radius:20px;
-    padding:.28rem .7rem;color:var(--ink-dim);
-    transition:opacity .15s ease, background-color .15s ease, border-color .15s ease;
-  }
-  .chip.dim{opacity:.28}
-  .chip.hit{background:var(--hit-bg);border-color:var(--accent);color:var(--ink)}
   .skills-line{font-size:.88rem;color:var(--ink-dim);margin-bottom:.7rem}
   .skills-line b{color:var(--ink)}
 
   ul.certs{list-style:none;display:flex;flex-direction:column;gap:.35rem}
   ul.certs li{
     font-size:.88rem;padding:.2rem .5rem;border-radius:5px;
-    transition:opacity .15s ease, background-color .15s ease;
   }
   ul.certs li .date{color:var(--ink-faint);font-size:.8rem}
-  ul.certs li.dim{opacity:.28}
-  ul.certs li.hit{background:var(--hit-bg)}
+  ul.certs li.collapsed{display:none}
+
+  .job.group-hidden{display:none}
 
   .edu-entry{font-size:.92rem;margin-bottom:.7rem}
   .edu-entry .loc{color:var(--ink-faint);font-size:.84rem}
@@ -176,7 +165,7 @@
       <ul class="tag-list" id="tagList"></ul>
       <button class="clear-btn" id="clearBtn" disabled>Show all</button>
       <div id="panel" hidden></div>
-      <p class="hint" id="hint">Click a category to see which lines below satisfy it, and how many years of experience back it up.</p>
+      <p class="hint" id="hint">Click a category to show only the lines that satisfy it, and how many years of experience back it up.</p>
     </aside>
 
     <main>
@@ -201,14 +190,14 @@
         </div>
         <ul class="bullets">
           <li data-cats="people-mgmt">Established and directed the Americas IT department for a global solar energy company, expanding from a single US-based employee to a full team of IT Support Analysts.</li>
-          <li data-cats="people-mgmt">Hired, trained, and performed oversight/evaluation of IT department staff; managed employee terminations in cooperation with HR, ensuring return of corporate assets.</li>
-          <li data-cats="asset server-infra">Orchestrated equipment planning, procurement, and installation for three new offices, alongside managing three office relocations, including Cisco network hardware setup and updates.</li>
-          <li data-cats="onboarding asset">Achieved a 99% on-time delivery rate for new hire equipment on their first day.</li>
-          <li data-cats="onboarding asset">Managed office moves and onboarding of M&amp;A organizations, including associated incoming/outgoing asset and resource transitions.</li>
+          <li data-cats="onboarding people-mgmt docs">Hired, trained, and performed oversight/evaluation of IT department staff; managed employee terminations in cooperation with HR, ensuring return of corporate assets.</li>
+          <li data-cats="asset server-infra endpoint">Orchestrated equipment planning, procurement, and installation for three new offices, alongside managing three office relocations, including Cisco network hardware setup and updates.</li>
+          <li data-cats="onboarding asset end-user endpoint identity">Managed IT onboarding of M&amp;A organizations, including associated incoming/outgoing asset and resource transitions.</li>
           <li data-cats="virtualization server-infra saas">Designed and implemented a proof-of-concept Citrix Cloud environment for GIS application deployment, involving Azure VM provisioning, desktop setup, and storage linkage.</li>
-          <li data-cats="end-user itsm">Provided Tier 1-3 IT support to a distributed workforce across three US offices and remote employees, extending remote assistance to international users in EMEA and APAC.</li>
-          <li data-cats="saas identity endpoint server-infra">Administered Microsoft 365 tenant end-to-end: hybrid AD-to-Entra ID sync, group/DL/Teams group management, SSO configuration for enterprise SaaS applications, Intune configuration policy authoring and software deployment, Exchange Admin, SharePoint Admin, Teams Admin, and Adobe Admin license assignment.</li>
-          <li data-cats="asset">Oversaw vendor partnerships, procurement processes, and the complete asset lifecycle within the Americas region.</li>
+          <li data-cats="end-user itsm endpoint docs identity">Provided Tier 1-3 IT support to a distributed workforce across three US offices and remote employees, extending remote assistance to international users in EMEA and APAC.</li>
+          <li data-cats="asset endpoint">Oversaw vendor partnerships, procurement processes, and the complete asset lifecycle within the Americas region.</li>
+          <li data-cats="end-user endpoint itsm automation saas identity docs">Continued to perform all assigned duties and responsibilities as Senior Support Analyst to ensure suitable coverage for Support team and Lightsource bp user community.</li>
+          <li data-cats="mentorship people-mgmt">Nominated to and successfully completed Lightsource bp's 'Sparks' Leadership Program, a company-wide cohort-based development program focused on cross-functional collaboration, relationship-building, and leadership fundamentals for corporate professionals.</li>
         </ul>
       </div>
 
@@ -218,11 +207,16 @@
           <span class="job-dates">06/2019 – 09/2022</span>
         </div>
         <ul class="bullets">
-          <li data-cats="end-user itsm">Served as the sole US-based IT support resource, managing all levels of technical support from first-line user contact through infrastructure troubleshooting, in accordance with IT SLAs.</li>
-          <li data-cats="end-user endpoint">Provided first-line helpdesk service, support, and advice to users on hardware and software issues; researched, installed, and configured new equipment and software.</li>
+          <li data-cats="end-user endpoint itsm">Served as the sole US-based IT support resource, managing all levels of technical support from first-line user contact through infrastructure troubleshooting, in accordance with IT SLAs.</li>
+          <li data-cats="onboarding asset mentorship">Achieved a 99% on-time delivery rate for new hire equipment on their first day. Performed Day 1 IT onboarding, guided account setup, and systems training for all new starters.</li>
+          <li data-cats="end-user endpoint">Provided first-line helpdesk service, support, and advice to users on hardware and software issues; researched, installed, and configured new equipment and software. Efforts included supporting a regionally distributed workforce with 50% in/near office employees and 50% remote employees; providing assistance and guidance on home-office equipment (network gear, desktop equipment) and personally owned devices (iPhones, Android phones, Apple/Mac devices.)</li>
+          <li data-cats="asset end-user">Managed office/desk/workstation rebuilds as part of 2021/2022 Return To Office initiatives, preparing offices for unassigned, hotdesking environment including management and configuration of Condeco desk booking system.</li>
           <li data-cats="itsm">Worked closely with Group IT and international offices to provide follow-the-sun service coverage.</li>
           <li data-cats="docs itsm asset">Established the operational foundation for the Americas IT Support function, including documentation of systems and adherence to Standard Operating Procedures.</li>
           <li data-cats="asset end-user">Managed inventory of equipment, consumables, and supplies; provided support and made regular on-site visits to regionally based offices as needed.</li>
+          <li data-cats="identity saas end-user">Managed user and account provisioning of SaaS applications including file sharing platforms, conferencing solutions, and office/organizational security dashboards.</li>
+          <li data-cats="asset endpoint end-user">Performed all job duties including asset management and warehousing, shipping, and switching to 100% remote support throughout the United States from my home/apartment from March 2020 to December 2020.</li>
+          <li data-cats="saas identity endpoint server-infra automation">Administered Microsoft 365 tenant end-to-end: hybrid AD-to-Entra ID sync, group/DL management, Teams creation, SSO configuration for enterprise SaaS applications, Intune configuration policy authoring and software deployment, Exchange Admin, SharePoint Admin, Teams Admin, and Adobe Admin license assignment.</li>
         </ul>
       </div>
 
@@ -239,6 +233,7 @@
           <li data-cats="automation docs">Identified and built script automation and internal tooling to accelerate issue identification and resolution, improving team efficiency.</li>
           <li data-cats="mentorship">Mentored and coached team members on product expertise and support workflows, helping them advance in their roles.</li>
           <li data-cats="itsm end-user">Consistently met and exceeded customer service level commitments while supporting enterprise-scale deployments.</li>
+          <li data-cats="onboarding end-user server-infra mentorship docs virtualization">Provided onboarding and admin training for all new US customers, including creating and maintaining training materials. Partnered with customers during onboarding and discovery to produce documentation and planning diagrams, supplemented with session recordings for future reference.</li>
         </ul>
       </div>
 
@@ -248,21 +243,23 @@
           <span class="job-dates">08/2013 – 06/2017</span>
         </div>
         <ul class="bullets">
-          <li data-cats="virtualization server-infra saas">Dedicated roughly a third of overall time to project work, per official role scoping: design and implementation of multiple virtual desktop models throughout UW Medicine, maintaining ongoing technical relationships with vendors including Cerner, Epic, Imprivata, Unidesk, Citrix, and VMware.</li>
-          <li data-cats="endpoint clinical regulated itsm">Supported over 20,000 endpoints across inpatient, ambulatory, and administrative settings as a member of the EDS Projects team at a leading academic medical center, spanning Harborview Medical Center, UW Medical Center, UWP Neighborhood Clinics, University of Washington Physicians, UW Neighborhood Clinics, and Northwest Hospital.</li>
-          <li data-cats="clinical itsm endpoint">Served as System Owner for UW Physicians' 2,500-endpoint Epic Hyperspace thick-client environment and primary owner of the Epic environment pick list, with all changes gated through change control.</li>
-          <li data-cats="virtualization identity server-infra">Led design and implementation of VDI environments across UW Medicine, developing and managing infrastructure via VMware Horizon and Unidesk application layering, including OS image management and Active Directory policy configuration.</li>
+          <li data-cats="virtualization server-infra saas automation">Dedicated roughly a third of overall time to project work, per official role scoping: design and implementation of multiple virtual desktop models throughout UW Medicine, maintaining ongoing technical relationships with vendors including Cerner, Epic, Imprivata, Unidesk, Citrix, and VMware.</li>
+          <li data-cats="itsm clinical endpoint regulated">Participated in evaluation and implementation of new technology rollouts such as wristband printers, barcode scanners, Dragon Naturally Speaking and handheld dictation devices, and the Follow Me Desktop initiative.</li>
+          <li data-cats="endpoint clinical regulated itsm automation">Supported over 20,000 endpoints across inpatient, ambulatory, and administrative settings as a member of the EDS Projects team at a leading academic medical center, spanning Harborview Medical Center, UW Medical Center, UWP Neighborhood Clinics, University of Washington Physicians, UW Neighborhood Clinics, and Northwest Hospital.</li>
+          <li data-cats="clinical itsm endpoint automation">Served as System Owner for UW Physicians' 2,500-endpoint Epic Hyperspace thick-client environment and primary owner of the Epic environment pick list, with all changes gated through change control.</li>
+          <li data-cats="virtualization identity server-infra onboarding regulated automation">Led design and implementation of VDI environments across UW Medicine, developing and managing infrastructure via VMware Horizon and Unidesk application layering, including OS image management and Active Directory policy configuration. Coordinated with department &ldquo;champions&rdquo; to identify and evaluate business justification and user requirements when developing VDI environments for various departments like Hospital Administration, UW Medicine Call Center, and IT/Technical teams.</li>
           <li data-cats="itsm clinical">Interfaced with external IT groups as the organization published IT applications to affiliated hospitals and care providers.</li>
-          <li data-cats="clinical identity virtualization end-user endpoint">Led the Cerner Follow Me roaming desktop project for Harborview and UWMC emergency departments (Imprivata OneSign, VMware), including on-site, hands-on go-live support manually enabling each workstation during live provider workflow and staying through shift changes.</li>
+          <li data-cats="clinical identity virtualization end-user endpoint automation">Led the Cerner Follow Me roaming desktop project for Harborview and UWMC emergency departments (Imprivata OneSign, VMware), including on-site, hands-on go-live support manually enabling each workstation during live provider workflow and staying through shift changes.</li>
           <li data-cats="clinical end-user">Volunteered to support a prenatal/perinatal unit go-live at UWMC; a flawless go-live attributable to thorough provider training beforehand.</li>
           <li data-cats="clinical regulated automation">Participated in the design and implementation of a 24x7 EMR downtime solution ensuring continuity of patient care during network outages and other business interruptions.</li>
-          <li data-cats="endpoint clinical">Maintained the full clinical device ecosystem, including WOWs, kiosks, workstations, label and wristband printers, scanners, and signature pads.</li>
-          <li data-cats="endpoint server-infra regulated">Administered SCCM for enterprise application packaging and software deployment, sharing patch management responsibilities via WSUS and SCOM; served as primary administrator for the Sophos anti-virus and desktop firewall upgrade/migration.</li>
-          <li data-cats="automation identity">Used scripting (VBScript/ADSI) to manage Active Directory objects and automate administrative tasks.</li>
-          <li data-cats="itsm regulated">Assisted in planning, design, and implementation of business resumption procedures and practices.</li>
+          <li data-cats="endpoint clinical">Managed and maintained the full clinical device ecosystem, including WOWs, kiosks, workstations, label and wristband printers, scanners, and signature pads.</li>
+          <li data-cats="endpoint server-infra regulated automation">Administered SCCM for enterprise application packaging and software deployment, sharing patch management responsibilities via WSUS and SCOM; served as primary administrator for the Sophos anti-virus and desktop firewall upgrade/migration.</li>
+          <li data-cats="automation identity">Used scripting (PowerShell/VBScript/ADSI) to manage Active Directory objects and automate administrative tasks.</li>
+          <li data-cats="itsm regulated">Assisted in planning, design, and implementation of business continuity procedures and practices.</li>
           <li data-cats="asset end-user">Provided consultation to users on hardware and software purchasing decisions.</li>
+          <li data-cats="itsm docs">Represented EDS Projects team at Enterprise Change Control to present and/or defend change requests related to operational changes, emergency changes, or project execution related changes.</li>
           <li data-cats="regulated clinical">Ensured HIPAA audit readiness through rigorous endpoint compliance, documentation standards, and enforcement of security policies.</li>
-          <li data-cats="mentorship">Mentored team members in technical problem-solving and provided input to management on staff performance evaluations.</li>
+          <li data-cats="mentorship">Mentored team members in technical problem-solving, cross team collaboration, support, and knowledge sharing, and provided input to management on staff performance evaluations.</li>
         </ul>
       </div>
 
@@ -272,13 +269,13 @@
           <span class="job-dates">11/2010 – 08/2013</span>
         </div>
         <ul class="bullets">
-          <li data-cats="end-user endpoint">Provided Tier 2 endpoint support for Harborview Medical Center, the Pacific Northwest's Level 1 burn and trauma center, serving clinical and administrative users in a high-acuity healthcare environment.</li>
-          <li data-cats="endpoint">Supported the complete device ecosystem, including desktops, laptops, WOWs, thin clients, printers, and specialized line-of-business peripherals, minimizing downtime through proactive maintenance.</li>
+          <li data-cats="end-user endpoint clinical">Provided Tier 2 endpoint support for Harborview Medical Center, the Pacific Northwest's Level 1 burn and trauma center, serving clinical and administrative users in a high-acuity healthcare environment.</li>
+          <li data-cats="endpoint clinical regulated">Supported the complete device ecosystem, including desktops, laptops, WOWs, thin clients, printers, and specialized line-of-business peripherals, minimizing downtime through proactive maintenance.</li>
           <li data-cats="itsm end-user endpoint">Participated in a rotating 24/7 on-call schedule with the UW Medical Center EDS team, ensuring critical endpoint availability where system reliability directly impacts patient care.</li>
           <li data-cats="endpoint itsm docs">Managed endpoints via SCCM and Active Directory, processed support tickets using CA Service Desk Manager, and upheld documentation standards.</li>
           <li data-cats="endpoint asset">Participated in new clinic and unit deployments, managed ongoing hardware refresh cycles, and executed the enterprise-wide XP to Windows 7 migration across the Harborview campus.</li>
           <li data-cats="mentorship end-user">Provided consultation and technical guidance to other support team members, IT Services project teams, and the broader medical center user community.</li>
-          <li data-cats="itsm endpoint clinical">Contributed to quality improvement initiatives and hardware/software architecture strategy to ensure alignment with Medical Center needs.</li>
+          <li data-cats="itsm endpoint clinical regulated">Contributed to quality improvement initiatives and hardware/software architecture strategy to ensure alignment with Medical Center needs.</li>
         </ul>
       </div>
 
@@ -288,9 +285,9 @@
           <span class="job-dates">02/2009 – 11/2010</span>
         </div>
         <ul class="bullets">
-          <li data-cats="end-user itsm">Served as the initial point of contact for UW Medicine staff, providing ticket and issue triage, analysis, and resolution of technology issues via phone and email.</li>
-          <li data-cats="itsm end-user">Served as Command Center for medical center IT issues, managing escalation to the appropriate teams (Customer Support Analysts, Business/Application Specialists, Operations, development, and vendors).</li>
-          <li data-cats="identity end-user">Administered application access across multiple platforms.</li>
+          <li data-cats="end-user endpoint itsm clinical regulated">Served as the initial point of contact for UW Medicine staff, providing ticket and issue triage, analysis, and resolution of technology issues via phone and email. This included providing support for on-premises organizationally owned devices, as well as best-effort support for on-campus, remote, or personally owned devices like mobile phones (Android, iPhone), laptops/desktops (Windows, Mac) and remote access business or clinical systems.</li>
+          <li data-cats="itsm end-user clinical">Served as Command Center for medical center IT issues, managing escalation to the appropriate teams (Customer Support Analysts, Business/Application Specialists, Operations, development, and vendors).</li>
+          <li data-cats="identity end-user regulated">Administered application access across multiple platforms.</li>
           <li data-cats="server-infra">Monitored network and program exceptions using third-party monitoring software.</li>
           <li data-cats="itsm docs">Participated in the Technical Users Group (TUG), working with cross-departmental representatives to understand their needs and promote UW Medicine IT standards.</li>
           <li data-cats="end-user itsm">Maintained consistent user communication throughout the support lifecycle, ensuring clarity on timelines and resolutions, and followed up to confirm work met expectations.</li>
@@ -348,30 +345,34 @@
         </ul>
       </div>
 
-      <h2 class="sect-title">Education</h2>
-      <div class="edu-entry">Seattle Central College — Network Design &amp; Administration<br><span class="loc">Seattle | 08/2008 – 12/2008</span></div>
-      <div class="edu-entry">East Valley High School<br><span class="loc">Gilbert, AZ | 1993</span></div>
+      <div class="job">
+        <h2 class="sect-title">Certifications</h2>
+        <ul class="certs">
+          <li>Apple Certified IT Professional <span class="date">— 05/2026</span></li>
+          <li>Microsoft Certified: Endpoint Administrator Associate <span class="date">— 03/2026</span></li>
+          <li>Jamf Certified Associate - Jamf Pro <span class="date">— 03/2026</span></li>
+          <li data-cats="itsm">ITIL® Foundation <span class="date">— 12/2024</span></li>
+        </ul>
+      </div>
 
-      <h2 class="sect-title">Early Formal Training (1996–1998)</h2>
-      <ul class="bullets">
-        <li data-cats="server-infra">Novell Network Administration — Lantech Systems, Phoenix, AZ (1996)</li>
-        <li data-cats="server-infra">Beginning UNIX — Santa Cruz Operations, Herndon, VA (1998)</li>
-        <li data-cats="automation">KornShell Programming — Learning Tree International, Rockville, MD (1998)</li>
-      </ul>
+      <h2 class="sect-title">Education</h2>
+      <div class="edu-entry">Seattle Central College — Network Design &amp; Administration<br><span class="loc">Seattle, WA</span></div>
+      <div class="edu-entry">East Valley High School<br><span class="loc">Gilbert, AZ</span></div>
 
       <h2 class="sect-title">Skills</h2>
-      <p class="skills-line"><b>Modern:</b> Bring Your Own Device (BYOD) Management, Enterprise Integration, Citrix XenApp/XenDesktop, VMware View/Horizon, Azure/Entra ID SSO, MFA, RBAC, SCCM, Active Directory, Autopilot, Sophos Endpoint Protection, Epic Hyperspace/BCA, Imprivata OneSign, macOS, iOS, ControlUp, HIPAA, PowerShell, Printer Management, Cisco Meraki Administration, Microsoft 365 Tenant Administration, Exchange Online Administration, SharePoint/OneDrive, Apple Business Manager, Logitech Conferencing Solutions, Microsoft Teams Rooms, Hyper-V/App-V, Microsoft Endpoint Manager/Intune, Jamf Pro, Panda AV/PCSM</p>
+      <p class="skills-line"><b>Modern:</b> Bring Your Own Device (BYOD) Management, Enterprise Integration, Citrix XenApp/XenDesktop, VMware View/Horizon, Azure/Entra ID SSO, MFA, RBAC, SCCM, Active Directory, Autopilot, Sophos Endpoint Protection, Epic Hyperspace/BCA, Imprivata OneSign, macOS, iOS, ControlUp, HIPAA, PowerShell, Printer Management, Cisco Meraki Administration, Microsoft 365 Tenant Administration, Exchange Online Administration, SharePoint/OneDrive, Apple Business Manager, Logitech Conferencing Solutions, Microsoft Teams Rooms, Hyper-V/App-V, Microsoft Endpoint Manager/Intune, Jamf Pro, Panda AV/PCSM, Zoom, ClickShare, Condeco</p>
       <p class="skills-line"><b>Legacy/Foundational:</b> Novell NetWare 3.12/4.1/4.11, OS/2 and OS/2 Warp, UnixWare, AppleTalk, Linux RedHat/Slackware, Windows 3.x/95/98/NT/2000/ME/XP, Cheyenne ArcServe, Kofax Imaging, CA Service Desk Manager, Basic HTML</p>
 
-      <h2 class="sect-title">Certifications</h2>
-      <ul class="certs">
-        <li>Apple Certified IT Professional <span class="date">— 05/2026</span></li>
-        <li>Microsoft Certified: Endpoint Administrator Associate <span class="date">— 03/2026</span></li>
-        <li>Jamf Certified Associate - Jamf Pro <span class="date">— 03/2026</span></li>
-        <li data-cats="itsm">ITIL® Foundation <span class="date">— 12/2024</span></li>
-        <li data-cats="clinical">Imprivata OneSign Administrator (Exp. 2019) <span class="date">— 04/2017</span></li>
-        <li data-cats="clinical">Epic Client Systems Administrator (Exp. 2019) <span class="date">— 11/2013</span></li>
-      </ul>
+      <div class="job">
+        <h2 class="sect-title">Other Training &amp; Education</h2>
+        <ul class="bullets">
+          <li data-cats="server-infra">Novell Network Administration — Lantech Systems, Phoenix, AZ (1996)</li>
+          <li data-cats="server-infra">Beginning UNIX — Santa Cruz Operations, Herndon, VA (1998)</li>
+          <li data-cats="automation">KornShell Programming — Learning Tree International, Rockville, MD (1998)</li>
+          <li data-cats="clinical">Epic Client Systems Administrator (Exp. 2019) — 11/2013</li>
+          <li data-cats="clinical">Imprivata OneSign Administrator (Exp. 2019) — 04/2017</li>
+        </ul>
+      </div>
 
     </main>
   </div>
@@ -387,43 +388,43 @@
     { id:"endpoint", num:2, title:"Endpoint Support & Administration",
       desc:"macOS, Windows, and mobile device management — such as but not specifically Jamf, Intune, or SCCM." },
     { id:"server-infra", num:3, title:"Server & Infrastructure Administration",
-      desc:"Server, network, and core infrastructure administration — such as but not specifically Windows Server, Novell/Unix systems, or cloud VM provisioning." },
+      desc:"Server, network, and core infrastructure administration — such as but not specifically network hardware, conferencing equipment, Windows Server, Microsoft 365 infrastructure, or cloud VM provisioning." },
     { id:"identity", num:4, title:"Identity & Access",
-      desc:"Identity provider and directory concepts — such as but not specifically Entra ID, Okta, or Active Directory." },
+      desc:"Identity provider and directory concepts — such as but not specifically native SaaS user provisioning, Entra ID, or Active Directory." },
     { id:"onboarding", num:5, title:"Onboarding & Offboarding",
-      desc:"Joiner/mover/leaver lifecycle ownership — such as but not specifically any one provisioning tool." },
+      desc:"Joiner/mover/leaver lifecycle ownership — such as Users, Groups, or Organizations or but not specifically any one provisioning tool." },
     { id:"itsm", num:6, title:"IT Service Management",
-      desc:"Service delivery, escalation paths, SLAs, and cross-team coordination — such as but not specifically ITIL or a particular ticketing platform." },
+      desc:"Service delivery, escalation paths, SLAs, and cross-team coordination — such as but not specifically ITIL or a particular ticketing platform like ServiceNow or Zendesk." },
     { id:"people-mgmt", num:7, title:"People Management",
-      desc:"Direct management of staff — hiring, evaluation, and day-to-day oversight — such as but not specifically a particular team size or industry." },
+      desc:"Direct management of staff — hiring, evaluation, and day-to-day oversight and management training activities." },
     { id:"mentorship", num:8, title:"Mentorship & Training",
-      desc:"Coaching and upskilling peers or junior staff — such as but not specifically a formal training program." },
+      desc:"Coaching and upskilling or knowledge transfer with customers, users, management, peers, or junior staff." },
     { id:"asset", num:9, title:"Asset & Inventory",
-      desc:"Hardware lifecycle, procurement, and inventory tracking — such as but not specifically any one asset management system." },
+      desc:"Hardware lifecycle, procurement, and inventory tracking." },
     { id:"docs", num:10, title:"Documentation & Process",
-      desc:"KB articles, runbooks, and process standardization — such as but not specifically any one platform." },
+      desc:"KB articles, runbooks, and process standardization." },
     { id:"saas", num:11, title:"SaaS Administration",
-      desc:"SaaS platform administration — such as but not specifically M365, Google Workspace, or Slack." },
+      desc:"SaaS platform administration — such as but not specifically M365, Google Workspace, Zoom, or Adobe Admin." },
     { id:"clinical", num:12, title:"Clinical Systems",
-      desc:"EHR platform experience — such as but not specifically Epic, Cerner, or Avatar." },
+      desc:"Support for Clinical or patient care centered systems including EHRs, public use kiosks, critical delivery systems, patient facing hardware, or other critical IT related components of patient care." },
     { id:"regulated", num:13, title:"Regulated Systems / Compliance",
-      desc:"HIPAA or similar regulatory frameworks, in any regulated environment. Distinct from clinical systems — this is about compliance and audit posture, not the clinical tooling itself." },
+      desc:"HIPAA or similar regulatory frameworks, in any regulated environment. May be but not necessarily clinical systems — this is about control plane, compliance, and audit posture, not the clinical tooling itself." },
     { id:"automation", num:14, title:"Automation & Scripting",
-      desc:"PowerShell, CLI scripting, login scripts, and WMI calls — such as but not specifically any one language or platform." },
+      desc:"PowerShell, CLI scripting, login scripts, batch files, install wrappers, and WMI calls." },
     { id:"virtualization", num:15, title:"Virtualization & VDI",
-      desc:"Virtual desktop and app delivery — such as but not specifically Citrix, VMware, or AVD." },
+      desc:"Virtual desktop and app delivery like Citrix, VMware, or AVD." },
   ];
 
   // Work-experience date ranges + which categories each role touched, used only
   // to compute the "years of experience" bubble. Overlapping roles are merged
   // per category so concurrent jobs aren't double-counted.
   const jobs = [
-    { start:"2022-09", end:"2026-02", cats:["people-mgmt","asset","server-infra","onboarding","virtualization","saas","end-user","itsm","identity","endpoint"] },
-    { start:"2019-06", end:"2022-09", cats:["end-user","itsm","endpoint","docs","asset"] },
-    { start:"2017-06", end:"2019-05", cats:["end-user","virtualization","server-infra","saas","endpoint","automation","docs","mentorship","itsm"] },
-    { start:"2013-08", end:"2017-06", cats:["virtualization","server-infra","saas","endpoint","clinical","regulated","itsm","identity","end-user","automation","asset","mentorship"] },
-    { start:"2010-11", end:"2013-08", cats:["end-user","endpoint","itsm","docs","asset","mentorship","clinical"] },
-    { start:"2009-02", end:"2010-11", cats:["end-user","itsm","identity","server-infra","docs"] },
+    { start:"2022-09", end:"2026-02", cats:["people-mgmt","onboarding","asset","server-infra","virtualization","saas","end-user","itsm","endpoint","automation","mentorship","docs","identity"] },
+    { start:"2019-06", end:"2022-09", cats:["end-user","endpoint","itsm","onboarding","asset","mentorship","docs","identity","saas","server-infra","automation"] },
+    { start:"2017-06", end:"2019-05", cats:["end-user","virtualization","server-infra","saas","endpoint","automation","docs","mentorship","itsm","onboarding"] },
+    { start:"2013-08", end:"2017-06", cats:["virtualization","server-infra","saas","endpoint","clinical","regulated","itsm","identity","end-user","automation","asset","mentorship","onboarding"] },
+    { start:"2010-11", end:"2013-08", cats:["end-user","endpoint","itsm","docs","asset","mentorship","clinical","regulated"] },
+    { start:"2009-02", end:"2010-11", cats:["end-user","itsm","identity","server-infra","docs","endpoint","clinical","regulated"] },
     { start:"2008-11", end:"2010-06", cats:["end-user","endpoint","asset","automation"] },
     { start:"1997-12", end:"2000-12", cats:["server-infra","endpoint","identity","asset"] },
     { start:"1996-03", end:"1997-02", cats:["server-infra","endpoint","asset","itsm"] },
@@ -491,11 +492,16 @@
     });
     clearBtn.disabled = !active;
 
-    document.querySelectorAll("[data-cats]").forEach(el=>{
-      if(!active){ el.classList.remove("hit","dim"); return; }
-      const cats = el.dataset.cats.split(" ");
-      if(cats.includes(active)){ el.classList.add("hit"); el.classList.remove("dim"); }
-      else { el.classList.add("dim"); el.classList.remove("hit"); }
+    document.querySelectorAll("main ul.bullets li, main ul.certs li").forEach(el=>{
+      if(!active){ el.classList.remove("collapsed"); return; }
+      const cats = (el.dataset.cats || "").split(" ").filter(Boolean);
+      el.classList.toggle("collapsed", !cats.includes(active));
+    });
+
+    document.querySelectorAll(".job").forEach(job=>{
+      if(!active){ job.classList.remove("group-hidden"); return; }
+      const hasVisible = !!job.querySelector("li:not(.collapsed)");
+      job.classList.toggle("group-hidden", !hasVisible);
     });
 
     if(!active){
