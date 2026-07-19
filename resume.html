@@ -16,6 +16,7 @@
     --accent-soft:#eeeef6;
     --mono:"IBM Plex Mono","SF Mono",Menlo,Consolas,monospace;
     --serif:"Georgia","Iowan Old Style",serif;
+    --header-h:0px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{
@@ -24,6 +25,9 @@
     line-height:1.55;
   }
   a{color:var(--accent)}
+
+  .sitehead{position:sticky;top:0;z-index:5;background:var(--bg)}
+
   .topbar{
     display:flex;justify-content:space-between;align-items:center;
     padding:.9rem 1.5rem;border-bottom:1px solid var(--line);
@@ -33,6 +37,12 @@
   .topbar a{color:var(--ink-faint);text-decoration:none;border-bottom:1px dotted var(--ink-faint)}
   .topbar a:hover{color:var(--accent);border-color:var(--accent)}
 
+  .idbar{
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    gap:.2rem;padding:.8rem 1.5rem;border-bottom:1px solid var(--line);
+  }
+  .idbar h1{font-family:var(--serif);font-size:1.18rem;font-weight:600}
+
   .layout{
     display:grid;
     grid-template-columns:300px minmax(0,1fr);
@@ -41,11 +51,11 @@
     align-items:start;
   }
   aside{
-    position:sticky;top:0;
+    position:sticky;top:var(--header-h);
     padding:2rem 1.4rem 2rem 1.5rem;
     border-right:1px solid var(--line);
     background:var(--panel);
-    height:100vh;overflow-y:auto;
+    height:calc(100vh - var(--header-h));overflow-y:auto;
   }
   aside h2{
     font-size:.68rem;font-family:var(--mono);letter-spacing:.1em;
@@ -94,20 +104,21 @@
   .hint{font-size:.82rem;color:var(--ink-faint);font-style:italic}
 
   main{padding:2.6rem clamp(1.4rem,4vw,3.2rem) 4rem}
-  .head{margin-bottom:2rem}
-  .head h1{font-family:var(--serif);font-size:2rem;margin-bottom:.3rem}
+
   .contact{font-size:.86rem;color:var(--ink-dim)}
   .contact span:not(:last-child)::after{content:" · "}
 
   .summary{
     font-size:.96rem;color:var(--ink-dim);max-width:70ch;
-    margin-bottom:2.4rem;padding-bottom:2rem;border-bottom:1px solid var(--line);
+    margin-bottom:2rem;
   }
 
   h2.sect-title{
     font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
     text-transform:uppercase;color:var(--ink-faint);margin:2.2rem 0 1rem;
   }
+  #summarySect>h2.sect-title{margin-top:0}
+  #summarySect[hidden]{display:none}
 
   .job{margin-bottom:1.9rem}
   .job-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.3rem;margin-bottom:.5rem}
@@ -154,10 +165,21 @@
 </head>
 <body>
 
-  <div class="topbar">
-    <span>Negentropic Systems</span>
-    <a href="index.html">← home</a>
-  </div>
+  <header class="sitehead">
+    <div class="topbar">
+      <span>Negentropic Systems</span>
+      <a href="index.html">← home</a>
+    </div>
+    <div class="idbar">
+      <h1>Dave Christensen</h1>
+      <div class="contact">
+        <span>San Francisco, United States</span>
+        <span>650-448-5372</span>
+        <span><a href="mailto:davec94103@outlook.com">davec94103@outlook.com</a></span>
+        <span><a href="https://www.linkedin.com/in/davec95014/" target="_blank" rel="noopener">LinkedIn</a></span>
+      </div>
+    </div>
+  </header>
 
   <div class="layout">
     <aside>
@@ -169,17 +191,10 @@
     </aside>
 
     <main>
-      <div class="head">
-        <h1>Dave Christensen</h1>
-        <div class="contact">
-          <span>San Francisco, United States</span>
-          <span>650-448-5372</span>
-          <span><a href="mailto:davec94103@outlook.com">davec94103@outlook.com</a></span>
-          <span><a href="https://www.linkedin.com/in/davec95014/" target="_blank" rel="noopener">LinkedIn</a></span>
-        </div>
+      <div id="summarySect">
+        <h2 class="sect-title">Summary</h2>
+        <p class="summary">Senior IT infrastructure and digital workplace professional with 17 years of experience leading IT operations in HIPAA-regulated healthcare, global enterprises, and mission-critical settings. I help organizations scale IT support while maintaining high service quality by building teams focused on root cause resolution, designing for reliability, and prioritizing user experience. I offer deep expertise in endpoint management, identity and access, virtualization, and large-scale service delivery, with a proven record of maturing service desk operations, leading complex infrastructure programs, and translating compliance requirements into operational controls. Currently based in San Francisco and open to relocation.</p>
       </div>
-
-      <p class="summary">Senior IT infrastructure and digital workplace professional with 17 years of experience leading IT operations in HIPAA-regulated healthcare, global enterprises, and mission-critical settings. I help organizations scale IT support while maintaining high service quality by building teams focused on root cause resolution, designing for reliability, and prioritizing user experience. I offer deep expertise in endpoint management, identity and access, virtualization, and large-scale service delivery, with a proven record of maturing service desk operations, leading complex infrastructure programs, and translating compliance requirements into operational controls. Currently based in San Francisco and open to relocation.</p>
 
       <h2 class="sect-title">Work Experience</h2>
 
@@ -382,6 +397,12 @@
   </footer>
 
 <script>
+  function syncHeaderHeight(){
+    document.documentElement.style.setProperty('--header-h', document.querySelector('.sitehead').offsetHeight + 'px');
+  }
+  syncHeaderHeight();
+  window.addEventListener('resize', syncHeaderHeight);
+
   const categories = [
     { id:"end-user", num:1, title:"End User Support",
       desc:"Direct, end-user-facing troubleshooting — phone, email, in person — such as but not specifically tied to a particular ticketing platform or organization size." },
@@ -491,6 +512,7 @@
       }
     });
     clearBtn.disabled = !active;
+    document.getElementById("summarySect").hidden = !!active;
 
     document.querySelectorAll("main ul.bullets li, main ul.certs li").forEach(el=>{
       if(!active){ el.classList.remove("collapsed"); return; }
