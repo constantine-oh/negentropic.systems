@@ -4,16 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dave Christensen — JD Alignment</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10 10 H90 V80 H30 V30 H70 V60 H50 V50' fill='none' stroke='%23b1502c' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='50' r='7' fill='%231568ac'/%3E%3C/svg%3E">
 <style>
   :root{
-    --bg:#ffffff;
-    --panel:#f7f7f6;
-    --ink:#1a1a1a;
-    --ink-dim:#59595a;
-    --ink-faint:#96958f;
-    --line:#e2e1de;
-    --accent:#4a4a80;
-    --accent-soft:#eeeef6;
+    --bg:#faf6ee;
+    --panel:#f2ead9;
+    --ink:#211c16;
+    --ink-dim:#5c5346;
+    --ink-faint:#948a76;
+    --line:#e6ddc9;
+    --rust:#b1502c;
+    --accent:#1568ac;
+    --accent-soft:#e6eef5;
     --mono:"IBM Plex Mono","SF Mono",Menlo,Consolas,monospace;
     --serif:"Georgia","Iowan Old Style",serif;
     --header-h:0px;
@@ -30,12 +32,21 @@
 
   .topbar{
     display:flex;justify-content:space-between;align-items:center;
-    padding:.9rem 1.5rem;border-bottom:1px solid var(--line);
+    padding:.75rem 1.5rem;
+    background:linear-gradient(90deg,var(--rust),var(--accent));
     font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;
-    text-transform:uppercase;color:var(--ink-faint);
+    text-transform:uppercase;color:#fff;
   }
-  .topbar a{color:var(--ink-faint);text-decoration:none;border-bottom:1px dotted var(--ink-faint)}
-  .topbar a:hover{color:var(--accent);border-color:var(--accent)}
+  .brand{display:flex;align-items:center;gap:.55rem;color:#fff}
+  .brand .mark{width:18px;height:18px;flex-shrink:0}
+  .btn-home{
+    display:inline-flex;align-items:center;gap:.4rem;
+    color:#fff !important;text-decoration:none;
+    border:1px solid rgba(255,255,255,.7) !important;border-radius:5px;
+    padding:.4rem .75rem;font-family:var(--mono);font-size:.7rem;
+    letter-spacing:.06em;text-transform:uppercase;
+  }
+  .btn-home:hover{background:#fff;color:var(--ink) !important;border-color:#fff !important}
 
   .idbar{
     display:flex;flex-direction:column;align-items:center;text-align:center;
@@ -109,7 +120,7 @@
   .contact span:not(:last-child)::after{content:" · "}
 
   #summarySect{margin-bottom:2rem}
-  .summary{font-size:.96rem;color:var(--ink-dim)}
+  .summary{font-size:.96rem;color:var(--ink-dim);margin-bottom:1rem}
 
   h2.sect-title{
     font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
@@ -163,10 +174,27 @@
 </head>
 <body>
 
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="negGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" style="stop-color:var(--rust)"/>
+        <stop offset="1" style="stop-color:var(--accent)"/>
+      </linearGradient>
+      <symbol id="negmark" viewBox="0 0 100 100">
+        <path d="M10 10 H90 V80 H30 V30 H70 V60 H50 V50" fill="none" stroke="url(#negGrad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="50" cy="50" r="6" fill="var(--accent)"/>
+      </symbol>
+      <symbol id="negmark-mono" viewBox="0 0 100 100">
+        <path d="M10 10 H90 V80 H30 V30 H70 V60 H50 V50" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="50" cy="50" r="6" fill="currentColor"/>
+      </symbol>
+    </defs>
+  </svg>
+
   <header class="sitehead">
     <div class="topbar">
-      <span>Negentropic Systems</span>
-      <a href="index.html">← home</a>
+      <span class="brand"><svg class="mark"><use href="#negmark-mono"/></svg> Negentropic Systems</span>
+      <a class="btn-home" href="index.html">← Home</a>
     </div>
     <div class="idbar">
       <h1>Dave Christensen</h1>
