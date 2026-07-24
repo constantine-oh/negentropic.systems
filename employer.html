@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Now Hiring: Employer — Negentropic Systems</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10 10 H90 V80 H30 V30 H70 V60 H50 V50' fill='none' stroke='%23b1502c' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='50' r='7' fill='%231568ac'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf6ee;
+    --panel:#f2ead9;
+    --ink:#211c16;
+    --ink-dim:#5c5346;
+    --ink-faint:#948a76;
+    --line:#e6ddc9;
+    --rust:#b1502c;
+    --rust-soft:#f5e1d1;
+    --blue:#1568ac;
+    --blue-soft:#e0ebf5;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --serif:"Fraunces",Georgia,serif;
+    --mono:"IBM Plex Mono","SF Mono",Menlo,Consolas,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.62;
+  }
+  a{color:var(--blue);text-decoration:none;border-bottom:1px solid var(--line)}
+  a:hover{border-color:var(--blue)}
+
+  /* shared with index.html / resume.html — same rule, so all three pages read as one property */
+  .sitehead{position:sticky;top:0;z-index:5}
+  .accent-bar{height:3px;background:linear-gradient(90deg,var(--rust),var(--blue))}
+  .topbar{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:.75rem 1.5rem;
+    background:linear-gradient(90deg,var(--rust),var(--blue));
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;
+    text-transform:uppercase;color:#fff;
+  }
+  .brand{display:flex;align-items:center;gap:.55rem;color:#fff}
+  .brand .mark{width:18px;height:18px;flex-shrink:0}
+  .navlinks{display:flex;gap:.6rem}
+  .btn-cta{
+    display:inline-flex;align-items:center;gap:.4rem;
+    background:#fff;color:var(--ink) !important;
+    padding:.5rem .85rem;border-radius:5px;border:0 !important;
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;
+  }
+  .btn-cta:hover{background:#f0ece2}
+
+  .wrap{max-width:700px;margin:0 auto;padding:0 clamp(1.4rem,5vw,3rem)}
+
+  header{padding:clamp(2.6rem,7vw,3.8rem) 0 2.2rem}
+  .org{
+    font-family:var(--serif);font-weight:600;font-optical-sizing:auto;
+    font-size:clamp(2rem,1rem + 4vw,3rem);
+    line-height:1.08;letter-spacing:-.01em;
+  }
+  .org .div{
+    display:block;font-size:.72rem;
+    font-family:var(--mono);font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--blue);
+    margin-top:.9rem;
+  }
+  .tagline{
+    font-size:clamp(1.02rem,.9rem + .6vw,1.2rem);
+    line-height:1.5;color:var(--ink-dim);margin-top:1.4rem;
+  }
+  .tagline b{color:var(--ink);font-weight:600}
+
+  .rule{height:1px;background:var(--line);border:0;margin:0}
+
+  main{padding:2.4rem 0 0}
+  .sect{margin-bottom:1.9rem}
+  .label{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--rust);margin-bottom:.9rem;
+  }
+  p{margin-bottom:1.05rem;color:var(--ink-dim)}
+  p.lead{color:var(--ink)}
+  p:last-child{margin-bottom:0}
+
+  ul.reqs{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin-bottom:0}
+  ul.reqs li{position:relative;padding-left:1.15rem;color:var(--ink-dim)}
+  ul.reqs li::before{content:"—";position:absolute;left:0;color:var(--rust)}
+
+  .pull{
+    font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:clamp(1.1rem,.95rem + .8vw,1.4rem);line-height:1.42;
+    color:var(--ink);border-left:2px solid var(--ink);
+    padding:.15rem 0 .15rem 1.3rem;margin:2rem 0;
+  }
+
+  footer{
+    max-width:700px;margin:0 auto;padding:1.3rem clamp(1.4rem,5vw,3rem) 3rem;
+    font-size:.78rem;color:var(--ink-faint);
+  }
+  footer a{color:var(--ink-faint);border-bottom:1px dotted var(--ink-faint)}
+  footer a:hover{color:var(--rust);border-color:var(--rust)}
+</style>
+</head>
+<body>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="negGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" style="stop-color:var(--rust)"/>
+        <stop offset="1" style="stop-color:var(--blue)"/>
+      </linearGradient>
+      <symbol id="negmark" viewBox="0 0 100 100">
+        <path d="M10 10 H90 V80 H30 V30 H70 V60 H50 V50" fill="none" stroke="url(#negGrad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="50" cy="50" r="6" fill="var(--blue)"/>
+      </symbol>
+      <symbol id="negmark-mono" viewBox="0 0 100 100">
+        <path d="M10 10 H90 V80 H30 V30 H70 V60 H50 V50" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="50" cy="50" r="6" fill="currentColor"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="sitehead">
+    <div class="topbar">
+      <span class="brand"><svg class="mark"><use href="#negmark-mono"/></svg> Negentropic Systems</span>
+      <div class="navlinks">
+        <a class="btn-cta" href="index.html">← Home</a>
+        <a class="btn-cta" href="resume.html">Résumé →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <header>
+      <h1 class="org">
+        Now Hiring: Employer
+        <span class="div">Operations Division · Req. 2026-01</span>
+      </h1>
+      <p class="tagline">Full-time. Long-term. <b>Judgment required.</b></p>
+    </header>
+
+    <hr class="rule">
+
+    <main>
+      <section class="sect">
+        <div class="label">The Role</div>
+        <p class="lead">This is a senior-level, full-time individual contributor position. The organization will provide infrastructure with genuine operational stakes, a service management practice built on defensible outcomes rather than sentiment, and the professional latitude to do the work without a management title standing between competence and authority.</p>
+      </section>
+
+      <div class="pull">IT is not overhead on the mission. It's part of how the mission gets executed.</div>
+
+      <section class="sect">
+        <div class="label">Responsibilities</div>
+        <ul class="reqs">
+          <li>Maintain a mature change management process, or demonstrate genuine intent and a concrete plan to build one.</li>
+          <li>Maintain and mature operational policies and procedures more broadly, or demonstrate the same genuine intent and a concrete plan to build them.</li>
+          <li>Measure service organization effectiveness against outcome-based metrics — self-service adoption, knowledge base utilization, deflection rate, issue and problem recurrence, change success rate, and environment health relative to configuration drift — rather than user sentiment or ticket volume in isolation.</li>
+          <li>Budget for, and adhere to, a standard hardware and software refresh cycle.</li>
+          <li>Provision systems according to actual workload requirements. Not all workloads are equivalent: word processing and calendar management do not carry the same resource demands as 3D CAD. Meeting minimum specification allows a system to power on; it does not guarantee meaningful productivity.</li>
+          <li>Communicate change to the user base in proportion to its actual impact. Communication and expectation-setting should be standard practice, but not every change warrants the same treatment — removing a widely used application calls for direct, "eyes-on" communication, while routine changes such as monthly security patching can be handled through standard channels like an intranet calendar or department update.</li>
+          <li>At the leadership level, understand the broader impact of systemic changes, allow adequate time and space for stakeholder communication, and remain receptive to feedback — including the occasional exception or alternative solution when a uniform rollout isn't the right fit.</li>
+        </ul>
+      </section>
+
+      <div class="pull">An IT organization measured by ticket volume optimizes for busywork. Measured by recurrence and drift, it optimizes for the thing that actually matters: whether the systems hold.</div>
+
+      <section class="sect">
+        <div class="label">Required Qualifications</div>
+        <ul class="reqs">
+          <li>Regards the IT organization as a necessary, value-adding function for mission execution and organizational success — not a cost center to be minimized.</li>
+          <li>Regards artificial intelligence as a tool for augmenting human judgment and capability, not a substitute for it.</li>
+          <li>Recognizes Agile as a framework for iterative development, collaboration, and managed workflow — not as license to derail priorities and justify constant firefighting.</li>
+          <li>Makes a genuine, budgeted investment in employee training and career development. A library of free online videos does not, on its own, constitute a professional development program.</li>
+          <li>Extends the same professional recognition and courtesy to its IT/IS staff — from Help Desk through CTO — as it does to other credentialed disciplines such as CPA, PE, or MBA. IT is a discipline in its own right, and deserves the same professional respect as any other function in the company.</li>
+          <li>Recognizes that the support function carries a dual mandate: enforcing policy and procedure, and advocating on behalf of the user base. Because support staff have direct, ground-level visibility into how the organization actually operates, they are well positioned to represent how operational decisions affect productivity — and should be consulted accordingly, not simply informed after the fact.</li>
+          <li>Recognizes that not every employee seeking career mobility wants a management track, and supports upward and lateral advancement within individual contributor roles accordingly — including active encouragement toward skills for adjacent disciplines when that's the stated goal. An employee who began their career in support, and is actively asking for more, should have a genuine path forward rather than being left in place indefinitely.</li>
+        </ul>
+      </section>
+
+      <section class="sect">
+        <div class="label">Compensation &amp; Benefits</div>
+        <ul class="reqs">
+          <li>Sets compensation with the recognition that pay is not only remuneration for work performed, but a practical precondition for employees to live within reasonable proximity to the workplace. An organization based in a high cost-of-living market has an obligation to compensate accordingly — access to talent depends on it.</li>
+          <li>Reasonably good coffee and snacks, on-site. IT organizations run substantially on caffeine and carbohydrates, and budgeting accordingly is simply good operational planning.</li>
+        </ul>
+      </section>
+
+      <section class="sect">
+        <div class="label">Equal Opportunity</div>
+        <p>The same standard of due process and corporate compliance applies at every level of the organization, from front-line staff through directors and executive leadership. No title exempts an individual from the policies that govern everyone else.</p>
+      </section>
+
+      <section class="sect">
+        <div class="label">How to Apply</div>
+        <p>Reach out directly — <a href="mailto:davec94103@outlook.com">email</a> or <a href="https://www.linkedin.com/in/davec95014/" target="_blank" rel="noopener">LinkedIn</a>. Résumé available in the next tab. References on request, and yes, they're real.</p>
+      </section>
+    </main>
+  </div>
+
+  <div class="accent-bar"></div>
+  <footer>
+    Negentropic Systems · <a href="https://negentropic.systems">negentropic.systems</a>
+  </footer>
+
+</body>
+</html>
