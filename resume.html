@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dave Christensen — Complete Technical Resume</title>
+<title>Dave Christensen — JD Alignment</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10 10 H90 V80 H30 V30 H70 V60 H50 V50' fill='none' stroke='%23b1502c' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='50' r='7' fill='%231568ac'/%3E%3C/svg%3E">
 <style>
   :root{
-    --bg:#faf6ee;
-    --panel:#f2ead9;
-    --ink:#211c16;
-    --ink-dim:#5c5346;
-    --ink-faint:#948a76;
-    --line:#e6ddc9;
-    --rust:#b1502c;
-    --accent:#1568ac;
-    --accent-soft:#e6eef5;
+    --bg:#f6f3ed;
+    --panel:#dce2e7;
+    --ink:#263849;
+    --ink-dim:#3e4e59;
+    --ink-faint:#756456;
+    --line:#bac5cf;
+    --rust:#90432e;
+    --accent:#165eaa;
+    --accent-soft:#d9e5f0;
     --mono:"IBM Plex Mono","SF Mono",Menlo,Consolas,monospace;
     --serif:"Georgia","Iowan Old Style",serif;
     --header-h:0px;
@@ -32,21 +32,21 @@
 
   .topbar{
     display:flex;justify-content:space-between;align-items:center;
-    padding:.75rem 1.5rem;
-    background:linear-gradient(90deg,var(--rust),var(--accent));
-    font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;
+    min-height:116px;padding:0 5.5vw;
+    background:var(--accent);border-bottom:8px solid var(--rust);
+    font-family:var(--mono);font-size:1rem;letter-spacing:.1em;
     text-transform:uppercase;color:#fff;
   }
-  .brand{display:flex;align-items:center;gap:.55rem;color:#fff}
-  .brand .mark{width:18px;height:18px;flex-shrink:0}
+  .brand{display:flex;align-items:center;gap:1rem;color:#fff;font-size:1.1rem;font-weight:700}
+  .brand .mark{width:40px;height:40px;flex-shrink:0}
   .btn-home{
     display:inline-flex;align-items:center;gap:.4rem;
     color:#fff !important;text-decoration:none;
-    border:1px solid rgba(255,255,255,.7) !important;border-radius:5px;
-    padding:.4rem .75rem;font-family:var(--mono);font-size:.7rem;
+    border:0 !important;border-bottom:2px solid transparent !important;border-radius:0;
+    padding:.5rem 0;font-family:var(--mono);font-size:.82rem;
     letter-spacing:.06em;text-transform:uppercase;
   }
-  .btn-home:hover{background:#fff;color:var(--ink) !important;border-color:#fff !important}
+  .btn-home:hover{background:transparent;color:#fff !important;border-color:#fff !important}
   .navlinks{display:flex;gap:.6rem}
 
   .idbar{
