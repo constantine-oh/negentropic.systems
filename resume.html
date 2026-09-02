@@ -37,8 +37,8 @@
     font-family:var(--mono);font-size:1rem;letter-spacing:.1em;
     text-transform:uppercase;color:#fff;
   }
-  .brand{display:flex;align-items:center;gap:1rem;color:#fff;font-size:1.1rem;font-weight:700}
-  .brand .mark{width:40px;height:40px;flex-shrink:0}
+  .brand{display:flex;align-items:center;color:#fff}
+  .brand-image{display:block;height:66px;width:auto}
   .btn-home{
     display:inline-flex;align-items:center;gap:.4rem;
     color:#fff !important;text-decoration:none;
@@ -47,7 +47,7 @@
     letter-spacing:.06em;text-transform:uppercase;
   }
   .btn-home:hover{background:transparent;color:#fff !important;border-color:#fff !important}
-  .navlinks{display:flex;gap:.6rem}
+  .navlinks{display:flex;gap:1.8rem}
 
   .idbar{
     display:flex;flex-direction:column;align-items:center;text-align:center;
@@ -194,10 +194,11 @@
 
   <header class="sitehead">
     <div class="topbar">
-      <span class="brand"><svg class="mark"><use href="#negmark-mono"/></svg> Negentropic Systems</span>
+      <a class="brand" href="index.html" aria-label="Negentropic Systems home"><img class="brand-image" src="negentropic-masthead.png" alt="Negentropic Systems"></a>
       <div class="navlinks">
-        <a class="btn-home" href="index.html">← Home</a>
-        <a class="btn-home" href="employer.html">Requisition →</a>
+        <a class="btn-home" href="index.html">Overview</a>
+        <a class="btn-home" href="resume.html" style="border-color:#fff !important">Interactive résumé</a>
+        <a class="btn-home" href="employer.html">Open requisition</a>
       </div>
     </div>
     <div class="idbar">

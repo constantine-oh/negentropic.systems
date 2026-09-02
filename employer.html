@@ -43,8 +43,8 @@
     font-family:var(--mono);font-size:1rem;letter-spacing:.1em;
     text-transform:uppercase;color:#fff;
   }
-  .brand{display:flex;align-items:center;gap:1rem;color:#fff;font-size:1.1rem;font-weight:700}
-  .brand .mark{width:40px;height:40px;flex-shrink:0}
+  .brand{display:flex;align-items:center;color:#fff}
+  .brand-image{display:block;height:66px;width:auto}
   .navlinks{display:flex;gap:1.8rem}
   .btn-cta{
     display:inline-flex;align-items:center;gap:.4rem;
@@ -126,10 +126,11 @@
 
   <div class="sitehead">
     <div class="topbar">
-      <span class="brand"><svg class="mark"><use href="#negmark-mono"/></svg> Negentropic Systems</span>
+      <a class="brand" href="index.html" aria-label="Negentropic Systems home"><img class="brand-image" src="negentropic-masthead.png" alt="Negentropic Systems"></a>
       <div class="navlinks">
-        <a class="btn-cta" href="index.html">← Home</a>
-        <a class="btn-cta" href="resume.html">Résumé →</a>
+        <a class="btn-cta" href="index.html">Overview</a>
+        <a class="btn-cta" href="resume.html">Interactive résumé</a>
+        <a class="btn-cta" href="employer.html" style="border-color:#fff !important">Open requisition</a>
       </div>
     </div>
   </div>
