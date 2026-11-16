@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>A minute of honest feedback | Negentropic Systems</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10 10 H90 V80 H30 V30 H70 V60 H50 V50' fill='none' stroke='%23b1502c' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='50' r='7' fill='%231568ac'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f4ec;
+    --ink:#1f3349;
+    --ink-dim:#4d5a68;
+    --ink-faint:#8a8f96;
+    --line:#ddd6c6;
+    --rust:#8f3e2b;
+    --blue:#1560a9;
+    --navy:#18477a;
+    --panel:#fffdf8;
+    --serif:"Newsreader",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:"IBM Plex Mono","SF Mono",Menlo,Consolas,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6}
+
+  .masthead{background:var(--blue);border-bottom:6px solid var(--rust);padding:1.1rem clamp(1.2rem,5vw,3rem)}
+  .masthead a{display:inline-block;border:0}
+  .masthead img{display:block;height:clamp(64px,12vw,110px);width:auto;max-width:100%}
+
+  .wrap{max-width:680px;margin:0 auto;padding:clamp(2rem,6vw,3.4rem) clamp(1.2rem,5vw,2rem) 4rem}
+
+  .kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,1.2rem + 3.4vw,3rem);line-height:1.08;letter-spacing:-.01em;margin-bottom:1.2rem}
+  h1 em{color:var(--rust);font-weight:500}
+  .intro p{color:var(--ink-dim);font-size:1.04rem;margin-bottom:.9rem}
+  .intro p.note{font-size:.9rem;color:var(--ink-faint)}
+
+  form{margin-top:2rem;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--rust);border-radius:10px;padding:clamp(1.2rem,4vw,1.9rem)}
+  fieldset{border:0;margin-bottom:1.7rem}
+  legend,.q{display:block;font-family:var(--serif);font-weight:600;font-size:1.12rem;margin-bottom:.2rem}
+  .hint{font-size:.84rem;color:var(--ink-faint);margin-bottom:.7rem}
+  .opt{display:flex;align-items:flex-start;gap:.65rem;padding:.42rem .2rem;cursor:pointer;font-size:.96rem;color:var(--ink-dim)}
+  .opt input{margin-top:.28rem;accent-color:var(--navy);width:1rem;height:1rem;flex-shrink:0}
+  .opt:hover{color:var(--ink)}
+  .inline{display:flex;flex-wrap:wrap;gap:.2rem 1.4rem}
+
+  textarea{width:100%;min-height:96px;resize:vertical;font:inherit;font-size:.96rem;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:6px;padding:.7rem .8rem;line-height:1.5}
+  input[type="text"]{width:100%;font:inherit;font-size:.96rem;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:6px;padding:.65rem .8rem}
+  textarea:focus,input[type="text"]:focus,.opt input:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+  .field{margin-bottom:1.7rem}
+  .sub{display:block;font-size:.88rem;color:var(--ink-dim);margin:.7rem 0 .3rem}
+
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  button{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:#fff;background:var(--navy);border:0;border-radius:6px;padding:.85rem 1.4rem;cursor:pointer}
+  button:hover{background:var(--blue)}
+  button:disabled{opacity:.6;cursor:default}
+  .status{margin-top:1rem;font-size:.92rem;min-height:1.3em}
+  .status.err{color:#a1281c}
+
+  .thanks{display:none;margin-top:2rem;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:10px;padding:clamp(1.4rem,4vw,2rem)}
+  .thanks h2{font-family:var(--serif);font-weight:600;font-size:1.6rem;margin-bottom:.6rem}
+  .thanks p{color:var(--ink-dim)}
+
+  footer{max-width:680px;margin:0 auto;padding:0 clamp(1.2rem,5vw,2rem) 3rem;font-size:.78rem;color:var(--ink-faint)}
+  footer a{color:var(--ink-faint);border-bottom:1px dotted var(--ink-faint);text-decoration:none}
+</style>
+</head>
+<body>
+
+  <div class="masthead">
+    <a href="https://negentropic.systems/"><img src="negentropic-masthead.png" alt="Negentropic Systems"></a>
+  </div>
+
+  <div class="wrap">
+
+    <div class="kicker">Post-interview debrief</div>
+    <h1>A minute of <em>honest</em> feedback.</h1>
+
+    <div class="intro">
+      <p>Thank you for the time you spent talking with me. It didn't work out this time, and I'd rather learn something from it than guess.</p>
+      <p>I'm working on getting better at interviewing and at presenting my experience. If you're willing, a quick, candid answer or two would help me more than you probably expect.</p>
+      <p class="note">This is anonymous. Nothing on this form asks who you are, which role it was, or which company, unless you choose to say so at the end. Skip anything you'd rather not answer.</p>
+    </div>
+
+    <form id="fb" novalidate>
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+      <div class="hp" aria-hidden="true"><label>Leave this empty <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label></div>
+
+      <fieldset>
+        <legend>What best describes why I didn't move forward?</legend>
+        <div class="hint">Pick any that apply. "Can't say" is a perfectly good answer.</div>
+        <label class="opt"><input type="checkbox" name="reason" value="Technical depth or experience for this specific role"> Technical depth or experience for this specific role</label>
+        <label class="opt"><input type="checkbox" name="reason" value="Another candidate was a closer match"> Another candidate was a closer match</label>
+        <label class="opt"><input type="checkbox" name="reason" value="How I answered interview questions"> How I answered interview questions</label>
+        <label class="opt"><input type="checkbox" name="reason" value="Level or title fit (too senior, too junior, or management history)"> Level or title fit (too senior, too junior, or management history)</label>
+        <label class="opt"><input type="checkbox" name="reason" value="Pay or location fit"> Pay or location fit</label>
+        <label class="opt"><input type="checkbox" name="reason" value="My resume or application materials"> My resume or application materials</label>
+        <label class="opt"><input type="checkbox" name="reason" value="The role changed, was cancelled, or went to an internal candidate"> The role changed, was cancelled, or went to an internal candidate</label>
+        <label class="opt"><input type="checkbox" name="reason" value="Can't say / prefer not to say"> Can't say / prefer not to say</label>
+      </fieldset>
+
+      <div class="field">
+        <label class="q" for="change">What is one thing I could do differently?</label>
+        <div class="hint">A sentence is plenty. Blunt is fine.</div>
+        <textarea id="change" name="change" maxlength="2000"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="q" for="well">Anything that went well?</label>
+        <div class="hint">Optional, but it's useful to know what to keep doing.</div>
+        <textarea id="well" name="well" maxlength="2000"></textarea>
+      </div>
+
+      <fieldset>
+        <legend>Did you look at my portfolio site, and how did it land?</legend>
+        <div class="inline">
+          <label class="opt"><input type="radio" name="site" value="Helped"> Helped</label>
+          <label class="opt"><input type="radio" name="site" value="Neutral"> Neutral</label>
+          <label class="opt"><input type="radio" name="site" value="Hurt"> Hurt</label>
+          <label class="opt"><input type="radio" name="site" value="Didn't look"> Didn't look</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Anything you'd like me to know about the role or about you?</legend>
+        <div class="hint">Completely optional, and most people will leave both blank. Share only what you're comfortable with.</div>
+        <label class="sub" for="role">Role or company this is about</label>
+        <input type="text" id="role" name="role" maxlength="200" autocomplete="off">
+        <label class="sub" for="who">Your name or email, if you're open to a reply</label>
+        <input type="text" id="who" name="who" maxlength="200" autocomplete="off">
+      </fieldset>
+
+      <button type="submit" id="send">Send feedback</button>
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+    </form>
+
+    <div class="thanks" id="thanks">
+      <h2>Thank you.</h2>
+      <p>That was a real favor. I'll put it to use, and I appreciate you taking the time.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    Negentropic Systems · <a href="https://negentropic.systems/">negentropic.systems</a>
+  </footer>
+
+<script>
+  (function(){
+    var form = document.getElementById('fb');
+    var status = document.getElementById('status');
+    var btn = document.getElementById('send');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      status.className = 'status';
+      status.textContent = '';
+
+      var reasons = Array.prototype.map.call(
+        form.querySelectorAll('input[name="reason"]:checked'), function(i){ return i.value; });
+      var siteEl = form.querySelector('input[name="site"]:checked');
+      var change = form.change.value.trim();
+      var well = form.well.value.trim();
+
+      if(!reasons.length && !change && !well && !siteEl){
+        status.className = 'status err';
+        status.textContent = 'Answer at least one question and I\u2019ll take it from there.';
+        return;
+      }
+
+      var payload = {
+        access_key: form.access_key.value,
+        subject: 'Interview feedback',
+        from_name: 'Negentropic debrief form',
+        role_or_company: form.role.value.trim() || '(not given)',
+        reasons: reasons.join('; ') || '(none selected)',
+        change: change || '(blank)',
+        went_well: well || '(blank)',
+        site_impression: siteEl ? siteEl.value : '(not answered)',
+        who: form.who.value.trim() || '(unnamed)',
+        botcheck: form.botcheck.checked ? 'yes' : ''
+      };
+
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify(payload)
+      }).then(function(r){ return r.json(); }).then(function(d){
+        if(d && d.success){
+          form.style.display = 'none';
+          document.querySelector('.intro').style.display = 'none';
+          document.getElementById('thanks').style.display = 'block';
+          window.scrollTo({top:0,behavior:'smooth'});
+        } else { throw new Error('rejected'); }
+      }).catch(function(){
+        btn.disabled = false;
+        btn.textContent = 'Send feedback';
+        status.className = 'status err';
+        status.textContent = 'Something went wrong sending that. Please try again in a moment.';
+      });
+    });
+  })();
+</script>
+<script data-goatcounter="https://negentropic.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
