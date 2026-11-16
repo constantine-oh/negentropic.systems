@@ -31,7 +31,25 @@
   .masthead a{display:inline-block;border:0}
   .masthead img{display:block;height:clamp(64px,12vw,110px);width:auto;max-width:100%}
 
-  .wrap{max-width:680px;margin:0 auto;padding:clamp(2rem,6vw,3.4rem) clamp(1.2rem,5vw,2rem) 4rem}
+  .wrap{max-width:1040px;margin:0 auto;padding:clamp(2rem,6vw,3.4rem) clamp(1.2rem,5vw,2rem) 4rem;display:grid;grid-template-columns:260px minmax(0,680px);gap:clamp(2rem,5vw,4rem);justify-content:center;align-items:start}
+  .main{min-width:0}
+
+  .card{position:sticky;top:1.5rem;background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--rust);border-radius:10px;padding:1.2rem}
+  .card img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:8px;margin-bottom:1rem}
+  .card .met{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:.35rem}
+  .card .nm{font-family:var(--serif);font-weight:600;font-size:1.35rem;line-height:1.2;margin-bottom:.8rem}
+  .card ul{list-style:none}
+  .card li{font-size:.88rem;line-height:1.45;margin-bottom:.45rem;overflow-wrap:anywhere}
+  .card a{color:var(--navy);text-decoration:none;border-bottom:1px solid var(--line)}
+  .card a:hover{border-color:var(--navy)}
+  .card .k{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+
+  @media(max-width:860px){
+    .wrap{display:block}
+    .card{position:static;margin-bottom:2rem;display:grid;grid-template-columns:96px 1fr;gap:0 1rem;align-items:start}
+    .card img{grid-row:1 / span 3;margin:0}
+    .card .contact{grid-column:1 / -1;margin-top:.9rem}
+  }
 
   .kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem}
   h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,1.2rem + 3.4vw,3rem);line-height:1.08;letter-spacing:-.01em;margin-bottom:1.2rem}
@@ -66,7 +84,7 @@
   .thanks h2{font-family:var(--serif);font-weight:600;font-size:1.6rem;margin-bottom:.6rem}
   .thanks p{color:var(--ink-dim)}
 
-  footer{max-width:680px;margin:0 auto;padding:0 clamp(1.2rem,5vw,2rem) 3rem;font-size:.78rem;color:var(--ink-faint)}
+  footer{max-width:1040px;margin:0 auto;padding:0 clamp(1.2rem,5vw,2rem) 3rem;font-size:.78rem;color:var(--ink-faint)}
   footer a{color:var(--ink-faint);border-bottom:1px dotted var(--ink-faint);text-decoration:none}
 </style>
 </head>
@@ -77,6 +95,20 @@
   </div>
 
   <div class="wrap">
+
+    <aside class="card" aria-label="About Dave">
+      <img src="headshot.jpg" width="600" height="600" alt="Dave Christensen">
+      <div class="met">So you can place me</div>
+      <div class="nm">Dave Christensen</div>
+      <ul class="contact">
+        <li><span class="k">Phone</span><a href="tel:+16504485372">+1 (650) 448-5372</a></li>
+        <li><span class="k">Email</span><a href="mailto:davec94103@outlook.com">davec94103@outlook.com</a></li>
+        <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/davec94103/" target="_blank" rel="noopener">linkedin.com/in/davec94103</a></li>
+        <li><span class="k">Online résumé</span><a href="https://negentropic.systems/resume.html">negentropic.systems/resume</a></li>
+      </ul>
+    </aside>
+
+    <main class="main">
 
     <div class="kicker">Post-interview debrief</div>
     <h1>A minute of <em>honest</em> feedback.</h1>
@@ -143,6 +175,8 @@
       <h2>Thank you.</h2>
       <p>That was a real favor. I'll put it to use, and I appreciate you taking the time.</p>
     </div>
+
+    </main>
 
   </div>
 
